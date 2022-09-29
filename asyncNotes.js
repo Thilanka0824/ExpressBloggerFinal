@@ -1,4 +1,5 @@
-//! - Synchronous vs Asynchronous
+
+/*// - Synchronous vs Asynchronous
 	- From MDN:
 		- https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing
 		- Asynchronous programming is a technique that enables your program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished. Once that task has finished, your program is presented with the result.
@@ -68,3 +69,5 @@
 - Additional resources:
 	- https://betterprogramming.pub/is-javascript-synchronous-or-asynchronous-what-the-hell-is-a-promise-7aa9dd8f3bfb#:~:text=under%20the%20hood.-,JavaScript%20is%20Synchronous,in%20progress%20at%20a%20time.
 	- https://www.youtube.com/watch?v=8aGhZQkoFbQ
+
+    */

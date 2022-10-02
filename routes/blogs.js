@@ -104,7 +104,7 @@ router.post('/create-one', async function (req, res, next) {
 
 
 
-router.put('update-one/:id', async function (req, res, next) {
+router.put('/update-one/:id', async function (req, res, next) {
     try {
         const id = req.params.id
         const title = req.body.title
@@ -113,11 +113,39 @@ router.put('update-one/:id', async function (req, res, next) {
         const email = req.body.email
         const categories = req.body.categories
         const starRating = req.body.starRating
+        const lastModified = new Date()
+
+        const blogData = {
+                    lastModified: lastModified
+
+                }
+        if(title !== undefined) {
+            blogData.title = title
+        }
         
+        if(text !== undefined) {
+            blogData.text = text
+        }
+
+        if(author !== undefined) {
+            blogData.author = author
+        }
+
+        if(email !== undefined) {
+            blogData.email = email
+        }
 
 
+        const updatePost = await db().collection('blogPosts').update({
+            id: id
+        }, {
+            $set: blogData
+        })
 
-
+        res.json({
+            success: true,
+            post: updatePost
+        })
 
     } catch (err) {
         console.log(err)
@@ -128,6 +156,25 @@ router.put('update-one/:id', async function (req, res, next) {
     }
 })
 
+
+router.delete('/delete-one/:id', async (req, res, next) => {
+    try {
+        const id = req.params.id
+        const deletePost = await db().collection('blogPosts').deleteOne({
+            id: id
+        })
+        res.json({
+            success: true,
+            post: deletePost
+        })
+    } catch (err) {
+        console.log(err)
+        res.json({
+            success: false,
+            error: err.toString()
+        })
+    }
+})
 
 
 
